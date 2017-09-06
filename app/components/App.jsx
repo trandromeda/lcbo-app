@@ -16,6 +16,7 @@ class App extends React.Component {
       .then(res => {
         const products = res.data.result
         this.setState({ products: products })
+        console.log(this.state.products)
       })
   }
 
@@ -24,14 +25,8 @@ class App extends React.Component {
       <div className="container">
         {this.state.products.map(product =>
           <Drink 
-          key={product.id} 
-          name={product.name} 
-          thumbnail={product.image_thumb_url} 
-          category={product.tertiary_category} 
-          package={product.package}
-          alcohol={product.alcohol_content}
-          price={product.price_in_cents}
-          is_dead={product.is_dead}
+          key={product.id}
+          data={product} 
           />
         )}     
       </div>

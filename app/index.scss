@@ -1,0 +1,206 @@
+body {
+  background:  #F1F1F1;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+}
+
+.horizontal-rule {
+  width: 100%;
+  background: #F3F1F3;
+  height: 1px;
+}
+
+.container {
+  display: flex;
+  max-width: 770px;
+  margin: auto;  
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Product card heights */
+$default-height: 355px;
+$first-row-height: 300px;
+$second-row-height: 385px;
+
+.drink {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: #FFFFFF;
+  height: $second-row-height;  
+  padding: 1em;
+  margin: 0.75vh 0;
+  box-sizing: border-box;
+
+  h1 {
+    text-align: center;
+    font-family: 'Lora', serif;
+    font-weight: bold;
+    font-size: 20px;
+    flex-basis: 100%;
+  }
+
+  .product-description {
+    flex-basis: 100%;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  p.category {
+    color: #6F6A71;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  p.package {
+    color: #9E9A9F;
+    font-size: 12px;
+    margin-top: 0px;
+  }
+
+  .price-box {
+    float: right;
+
+    // Use flex to properly horizontally and vertically align the price and in-stock paragraphs
+    display: flex;
+    width: 100%;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  p.price {
+    color: #423C44;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0 5px 0;
+    text-align: right;
+
+    // For the default cards
+    order: 2;
+  }
+
+  .dollar {
+    color: #6F6A71;
+    font-size: 11px;
+  }
+
+  p.in-stock {
+    color: #6F6A71;
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 0;
+    text-align: right;
+
+    // For the default cards
+    order: 1;
+  }
+
+  .thumbnail {
+    display: block;
+    margin: auto;
+  }
+}
+
+/* Desktop */
+@media (min-width: 500px) {
+// DEFAULT ROWS
+  .drink {
+    height: $default-height;
+    flex-basis: 32%;
+
+    .thumbnail {
+      height: $default-height * .35;
+    }
+  }
+
+// FIRST ROW
+  .drink:nth-child(1) {
+    height: $first-row-height;
+    flex-basis: 100%;
+    display: block;
+    padding: 2.5em;
+
+    h1 {
+      margin-top: 10%;
+      text-align: left;
+    }
+
+    .thumbnail {
+      // float: left;
+      height: $first-row-height * .80;
+      margin: 0;
+    }    
+  }
+
+// SECOND ROW
+  .drink:nth-child(2), .drink:nth-child(3) {
+    height: $second-row-height;
+    flex-basis: 49%;
+
+    .thumbnail {
+      height: $second-row-height * .55;
+    }        
+  }
+
+  // Style the first two rows together because they share styles that are different from the rest of the cards
+  .drink:nth-child(1), .drink:nth-child(2), .drink:nth-child(3) {
+    .thumbnail {
+      float: left;
+    }
+
+    .desc-box {
+      float: left;
+
+      p {
+        text-align: left;
+      }
+    }    
+
+    .price-box {
+      display: block;
+      width: auto;
+    }
+  }
+
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+  .container {
+    max-width: 100%;
+    flex-direction: column;
+  }
+
+  .drink {
+    height: 385px;
+    padding: 1.5em;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .thumbnail {
+    height: 200px;
+  }
+
+  h1 {
+    flex-basis: 100%;
+  }
+
+  .product-description {
+    flex-basis: 100%;
+  }
+
+  .desc-box {
+    float: left;
+
+    p {
+      text-align: left;
+    }
+  }
+}

@@ -6,15 +6,28 @@ class Drink extends React.Component {
   }
 
   render () {
+    let price = (this.props.data.price_in_cents / 100).toFixed(2);
+    let alcohol_volume = (this.props.data.alcohol_content / this.props.data.volume_in_milliliters * 100).toFixed(1);
+
     return (
       <div className="drink">
-      <img src={this.props.thumbnail} className="thumbnail" />
-        <h1>{this.props.name}</h1>
-        <p>{this.props.category} <br />
-        {this.props.package} - {this.props.alcohol}</p>
+      <img src={this.props.data.image_thumb_url} className="thumbnail" />
+        <h1>{this.props.data.name}</h1>
 
-        <p>{this.props.price} <br />
-        {this.props.is_dead}</p>
+        <div className="product-description">
+          <div className="horizontal-rule"></div>
+
+          <div className="desc-box">
+            <p className="category">{this.props.data.tertiary_category}</p>
+            <p className="package">{this.props.data.package} - {alcohol_volume}% Alcohol</p>
+          </div>
+
+          <div className="price-box">
+            <p className="price"><span className="dollar">$</span>{price}</p>
+            <p className="in-stock">{!this.props.data.is_dead ? 'y' : 'n'} IN STOCK</p>
+          </div>
+
+        </div>
 
       </div>
       )
