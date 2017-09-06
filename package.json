@@ -1,0 +1,24 @@
+{
+  "name": "opencare-app",
+  "version": "1.0.0",
+  "description": "OpenCare interview assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trandromeda/opencare-assignment.git"
+  },
+  "author": "Andy Tran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trandromeda/opencare-assignment/issues"
+  },
+  "homepage": "https://github.com/trandromeda/opencare-assignment#readme",
+  "dependencies": {
+    "and": "0.0.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
