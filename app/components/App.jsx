@@ -1,10 +1,16 @@
 import React from 'react';
+import Drink from './Drink.jsx';
 
 class App extends React.Component {
   render () {
     return (
       <div className="container">
-        <h1>Hello</h1>
+        <Drink />
+        <Drink />
+        <Drink />
+        <Drink />
+        <Drink />
+        <Drink />        
       </div>
       )
   }
