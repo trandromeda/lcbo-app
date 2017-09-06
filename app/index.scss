@@ -1,0 +1,77 @@
+body {
+  background:  #F1F1F1;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  display: flex;
+  max-width: 770px;
+  margin: auto;  
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Product card heights */
+$default-height: 355px;
+$first-row-height: 300px;
+$second-row-height: 385px;
+
+.drink {
+  /*display: flex;*/
+  background: #FFFFFF;
+  height: 385px;  
+  margin: 0.75vh 0;
+
+  h1 {
+    font-family: 'Lora', serif;
+    font-size: 1em;
+  }
+}
+
+/* Desktop */
+@media (min-width: 500px) {
+  .drink {
+    height: $default-height;
+    flex-basis: 32%;
+
+    .thumbnail {
+      height: $default-height * .40;
+    }
+  }
+
+  .drink:nth-child(1) {
+    height: $first-row-height;
+    flex-basis: 100%;
+
+    .thumbnail {
+      float: left;
+      height: $first-row-height * .80;
+    }    
+  }
+
+  .drink:nth-child(2), .drink:nth-child(3) {
+    height: $second-row-height;
+    flex-basis: 49%;
+
+    .thumbnail {
+      height: $second-row-height * .55;
+    }        
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+  .container {
+    max-width: 100%;
+    flex-direction: column;
+  }
+
+  .drink {
+    height: 385px;
+    flex-basis: auto;
+  }
+}
