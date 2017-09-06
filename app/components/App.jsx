@@ -16,6 +16,7 @@ class App extends React.Component {
       .then(res => {
         const products = res.data.result
         this.setState({ products: products })
+        console.log(this.state.products)
       })
   }
 
@@ -30,6 +31,7 @@ class App extends React.Component {
           category={product.tertiary_category} 
           package={product.package}
           alcohol={product.alcohol_content}
+          volume={product.volume_in_milliliters}
           price={product.price_in_cents}
           is_dead={product.is_dead}
           />

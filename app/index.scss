@@ -6,6 +6,12 @@ p {
   font-family: 'Roboto', sans-serif;
 }
 
+.horizontal-rule {
+  width: 100%;
+  background: #F3F1F3;
+  height: 1px;
+}
+
 .container {
   display: flex;
   max-width: 770px;
@@ -22,12 +28,52 @@ $second-row-height: 385px;
 .drink {
   /*display: flex;*/
   background: #FFFFFF;
-  height: 385px;  
+  height: $second-row-height;  
+  padding: 0.5em;
   margin: 0.75vh 0;
+  box-sizing: border-box;
 
   h1 {
+    text-align: center;
     font-family: 'Lora', serif;
-    font-size: 1em;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  p.category {
+    color: #6F6A71;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  p.package {
+    color: #9E9A9F;
+    font-size: 12px;
+    margin-top: 0px;
+  }
+
+  .price-box {
+    float: right;
+  }
+  
+  p.price {
+    color: #423C44;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .dollar {
+    color: #6F6A71;
+    font-size: 11px;
+  }
+
+  .thumbnail {
+    display: block;
+    margin: auto;
   }
 }
 
