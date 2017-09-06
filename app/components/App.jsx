@@ -16,7 +16,6 @@ class App extends React.Component {
       .then(res => {
         const products = res.data.result
         this.setState({ products: products })
-        console.log(this.state)
       })
   }
 
