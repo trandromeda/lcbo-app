@@ -11,6 +11,7 @@ body {
 }
 
 .drink {
+    /*display: flex;*/
     background: #FFFFFF;
     height: 385px;  
     margin: 0.75vh 0;
@@ -46,4 +47,9 @@ body {
     height: 385px;
     flex-basis: auto;
   }
+}
+
+.thumbnail {
+  height: 200px;
+  float: left;
 }
