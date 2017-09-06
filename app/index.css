@@ -19,14 +19,17 @@ body {
 /* Desktop */
 @media (min-width: 500px) {
   .drink {
+    height: 355px;
     flex-basis: 32%;
   }
 
   .drink:nth-child(1) {
+    height: 300px;
     flex-basis: 100%;
   }
 
   .drink:nth-child(2), .drink:nth-child(3) {
+    height: 385px;
     flex-basis: 49%;
   }
 }
@@ -40,6 +43,7 @@ body {
   }
 
   .drink {
+    height: 385px;
     flex-basis: auto;
   }
 }
