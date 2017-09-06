@@ -25,15 +25,8 @@ class App extends React.Component {
       <div className="container">
         {this.state.products.map(product =>
           <Drink 
-          key={product.id} 
-          name={product.name} 
-          thumbnail={product.image_thumb_url} 
-          category={product.tertiary_category} 
-          package={product.package}
-          alcohol={product.alcohol_content}
-          volume={product.volume_in_milliliters}
-          price={product.price_in_cents}
-          is_dead={product.is_dead}
+          key={product.id}
+          data={product} 
           />
         )}     
       </div>
