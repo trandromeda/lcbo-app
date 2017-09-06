@@ -1,0 +1,49 @@
+body {
+  background:  #F1F1F1;
+}
+
+.container {
+  display: flex;
+  max-width: 770px;
+  margin: auto;  
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.drink {
+    background: #FFFFFF;
+    height: 385px;  
+    margin: 0.75vh 0;
+}
+
+/* Desktop */
+@media (min-width: 500px) {
+  .drink {
+    height: 355px;
+    flex-basis: 32%;
+  }
+
+  .drink:nth-child(1) {
+    height: 300px;
+    flex-basis: 100%;
+  }
+
+  .drink:nth-child(2), .drink:nth-child(3) {
+    height: 385px;
+    flex-basis: 49%;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+  .container {
+    max-width: 100%;
+    flex-direction: column;
+  }
+
+  .drink {
+    height: 385px;
+    flex-basis: auto;
+  }
+}
