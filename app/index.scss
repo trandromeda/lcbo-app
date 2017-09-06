@@ -59,7 +59,7 @@ $second-row-height: 385px;
   .price-box {
     float: right;
   }
-  
+
   p.price {
     color: #423C44;
     font-size: 16px;
@@ -118,6 +118,29 @@ $second-row-height: 385px;
 
   .drink {
     height: 385px;
-    flex-basis: auto;
+    // flex-basis: auto;
+    padding: 1.5em;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .thumbnail {
+    height: 200px;
+  }
+
+  h1 {
+    flex-basis: 100%;
+  }
+
+  .horizontal-rule {
+    width: 315px;
+  }
+
+  .desc-box {
+    float: left;
+
+    p {
+      text-align: left;
+    }
   }
 }

@@ -17,13 +17,16 @@ class Drink extends React.Component {
         <div className="product-description">
           <div className="horizontal-rule"></div>
 
-          <p className="category">{this.props.category}</p>
-          <p className="package">{this.props.package} - {alcohol_volume}% Alcohol</p>
+          <div className="desc-box">
+            <p className="category">{this.props.category}</p>
+            <p className="package">{this.props.package} - {alcohol_volume}% Alcohol</p>
+          </div>
 
           <div className="price-box">
             <p className="price"><span className="dollar">$</span>{price} <br />
             {this.props.is_dead}</p>
           </div>
+
         </div>
 
       </div>
