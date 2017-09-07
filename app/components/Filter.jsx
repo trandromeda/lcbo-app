@@ -32,45 +32,47 @@ class Filter extends React.Component {
   render() {
     return (
       <div className="filter">
+        <h1>Discover the LCBO</h1>
         <form onSubmit={this.handleSubmit}>
-          <label>
-          Seasonal drinks
+          <label className="form-box">
           <input
             type="checkbox"
             value="is_seasonal"
             onChange={this.handleInputChange}
           />
+          <h2>Seasonal</h2>
           </label>
 
-          <label>
-          Limited time offers
+          <label className="form-box">
           <input
             type="checkbox"
             value="has_limited_time_offer"
             onChange={this.handleInputChange}
           />
+          <h2>Limited Time</h2>
+
           </label>
 
-          <label>
-          VQA designated
+          <label className="form-box">
           <input
             type="checkbox"
             value="is_vqa"
             onChange={this.handleInputChange}
           />
+          <h2>VQA Designated</h2>
           </label>
 
-          <label>
-          Proudly produced by Ontario Craft Brewers
+          <label className="form-box">
           <input
             type="checkbox"
             value="is_ocb"
             onChange={this.handleInputChange}
           />
+          <h2>Ontario Craft Brewers</h2>
           </label> 
 
-          <label>
-          Enter some keywords (e.g. wine, red, fruit)
+          <label className="form-search">
+          <p>Enter some keywords (e.g. wine, sparkling, fruit)</p>
           <input
             type="text"
             name="search"
@@ -79,10 +81,7 @@ class Filter extends React.Component {
           />
           </label> 
 
-          <input 
-            type="submit" 
-            value="Submit"
-          />
+          <button className="form-submit" type="submit">Submit</button>
         </form>
       </div>
     )
