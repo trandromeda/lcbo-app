@@ -24,7 +24,11 @@ class Drink extends React.Component {
 
           <div className="price-box">
             <p className="price"><span className="dollar">$</span>{price}</p>
-            <p className="in-stock">{!this.props.data.is_dead ? 'y' : 'n'} IN STOCK</p>
+            <p className="in-stock">
+              {!this.props.data.is_dead 
+                ?  <span className="fa fa-check"></span>
+                :  <span className="fa fa-times"></span>} IN STOCK
+            </p>
           </div>
 
         </div>

@@ -80,6 +80,8 @@ class App extends React.Component {
 
   toggleFilter() {
     this.setState({filterVisible: !this.state.filterVisible});
+        console.log(this.state.products)
+
   }
 
   toggleModal() {

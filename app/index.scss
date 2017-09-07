@@ -16,6 +16,10 @@ h1 {
   font-size: 20px;
 }
 
+.fa-check {
+  color: #73D593;
+}
+
 .horizontal-rule {
   width: 100%;
   background: #F3F1F3;
@@ -27,7 +31,11 @@ h1 {
 .header {
   background: #FFFFFF;
   height: 3vh;
-  padding: 5px;
+  padding: 10px;
+
+  .fa-filter {
+    font-size: 1.5em;
+  }
 
   .inner-wrapper {
     max-width: 770px;
@@ -409,7 +417,7 @@ $second-row-height: 385px;
 }
 
 .modal.drink {
-  flex-basis: 50%;
+  flex-basis: 55%;
   background: #FFFFFF;
   margin-top: 100px;
   width: 500px;
@@ -420,6 +428,7 @@ $second-row-height: 385px;
     float: none;
     display: block;
     margin: auto;
+    clear: right;
   }
 
   h1 {
@@ -450,6 +459,45 @@ $second-row-height: 385px;
       color: #9E9A9F;
       text-align: right;
       margin: 5px 0;
+    }
+  }
+
+  button.buy {
+    border: none;
+    font-family: 'Lora', serif;
+    font-size: inherit;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 15px;
+    display: block;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    background: #423C44;
+    width: 100%;
+    margin: 15px auto;
+
+    &:hover, &:active {
+      color: #000000;
+      background: #FFFFFF;
+      cursor: pointer;
+    } 
+  }  
+
+  button.close {
+    border: none;
+    outline: none;
+    background: #FFFFFF;
+    float: right;
+    cursor: pointer;
+
+    span {
+      text-align: right;
+      font-size: 1.5em;
     }
   }
 }

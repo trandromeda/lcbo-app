@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class Modal extends React.Component {
   render() {
@@ -31,12 +32,14 @@ class Modal extends React.Component {
 
     const price = (this.props.data.price_in_cents / 100).toFixed(2);
     const alcohol_volume = (this.props.data.alcohol_content / 100).toFixed(1);
+    const name = (this.props.data.name);
+    const url = "http://www.lcbo.com/lcbo/product/" + name.split(/[\s\']/).join('-') + "/" + (this.props.data.product_no);
 
     return (
       <div className="backdrop">
         <div className="modal drink">
-          <button onClick={this.props.onClose}>
-            X
+          <button className="close" onClick={this.props.onClose}>
+            <span className="fa fa-times"></span>
           </button>
 
           <img src={this.props.data.image_thumb_url} className="thumbnail" />
@@ -51,7 +54,11 @@ class Modal extends React.Component {
 
               <div className="price-box">
                 <p className="price"><span className="dollar">$</span>{price}</p>
-                <p className="in-stock">{!this.props.data.is_dead ? 'y' : 'n'} IN STOCK</p>
+                <p className="in-stock">
+                  {!this.props.data.is_dead 
+                    ?  <span className="fa fa-check"></span>
+                    :  <span className="fa fa-times"></span>} IN STOCK
+                </p>
               </div>
             
 
@@ -66,14 +73,21 @@ class Modal extends React.Component {
               </div>
 
               <div className="details-values">
-                <p>{this.props.data.released_on}</p>
-                <p>{this.props.data.origin}</p>
-                <p>{this.props.data.producer_name}</p>
-                <p>{this.props.data.sugar_in_grams_per_leter}</p>
-                <p>{this.props.data.sugar_content}</p>
-                <p>{this.props.data.style}</p>
+                <p>{this.props.data.released_on ? this.props.data.released_on : '...'}</p>
+                <p>{this.props.data.origin ? this.props.data.origin : '...'}</p>
+                <p>{this.props.data.producer_name ? this.props.data.producer_name : '...'}</p>
+                <p>{this.props.data.sugar_in_grams_per_liter ? this.props.data.sugar_in_grams_per_leter : '...'}</p>
+                <p>{this.props.data.sugar_content ? this.props.data.sugar_content : '...'}</p>
+                <p>{this.props.data.style ? this.props.data.style : '...'}</p>
               </div>
             </div>
+
+              <a href={url}  target="_blank">
+                <button className="buy">
+                Buy on LCBO.com
+                </button>
+              </a>
+
           </div>
         </div>
       </div>

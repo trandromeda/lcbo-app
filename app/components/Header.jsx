@@ -9,7 +9,7 @@ class Header extends React.Component {
     return (
       <div className="header">
         <div className="inner-wrapper">
-          <div className="filter-icon" onClick={this.props.onClick}>Filter</div>
+          <div className="filter-icon" onClick={this.props.onClick}><span className="fa fa-filter"></span></div>
           <h1>Drynk</h1>
         </div>
       </div>
