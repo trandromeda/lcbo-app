@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Allow users to search the LCBO
+
 class Filter extends React.Component {
   constructor(props) {
     super(props);

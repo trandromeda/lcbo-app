@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Render each individual card on the home page
+
 class DrinkCard extends React.Component {
   constructor(props) {
     super();

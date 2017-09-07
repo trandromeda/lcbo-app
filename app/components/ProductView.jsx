@@ -1,5 +1,7 @@
 import React from 'react';
-import DrinkCard from './DrinkCard.jsx';
+
+// This is a presentational component that displays information about a single product
+// It overlaps with DrinkCard but is separate because they serve different functions and have different style requirements
 
 class ProductView extends React.Component {
   constructor(props) {

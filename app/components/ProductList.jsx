@@ -2,6 +2,8 @@ import React from 'react';
 import DrinkCard from './DrinkCard.jsx';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
+// Display a list of products 
+
 class ProductList extends React.Component {
   constructor(props) {
     super(props);
