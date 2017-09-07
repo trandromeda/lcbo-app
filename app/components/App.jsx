@@ -62,7 +62,6 @@ class App extends React.Component {
   }
 
   toggleFilter() {
-    console.log('clicked');
     this.setState({filterVisible: !this.state.filterVisible});
   }
 
