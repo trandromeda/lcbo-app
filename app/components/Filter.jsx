@@ -4,28 +4,29 @@ class Filter extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleSeasonalInputChange = this.handleSeasonalInputChange.bind(this);
-    this.handleLimitedInputChange = this.handleLimitedInputChange.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSeasonalInputChange(e) {
-    this.props.onSeasonalInput(e.target.checked);
+  handleInputChange(e) {
+    this.props.onInput(e.target.checked, e.target.value);
   }
 
-  handleLimitedInputChange(e) {
-    this.props.onLimitedInput(e.target.checked);
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.onSubmit();
   }
 
   render() {
     return (
       <div className="filter">
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>
           Seasonal drinks
           <input
             type="checkbox"
-            checked={this.props.seasonal}
-            onChange={this.handleSeasonalInputChange}
+            value="is_seasonal"
+            onChange={this.handleInputChange}
           />
           </label>
 
@@ -33,8 +34,8 @@ class Filter extends React.Component {
           Limited time offers
           <input
             type="checkbox"
-            checked={this.props.limited}
-            onChange={this.handleLimitedInputChange}
+            value="has_limited_time_offer"
+            onChange={this.handleInputChange}
           />
           </label>
 
@@ -42,6 +43,8 @@ class Filter extends React.Component {
           VQA designated
           <input
             type="checkbox"
+            value="is_vqa"
+            onChange={this.handleInputChange}
           />
           </label>
 
@@ -49,15 +52,15 @@ class Filter extends React.Component {
           Proudly produced by Ontario Craft Brewers
           <input
             type="checkbox"
+            value="is_ocb"
+            onChange={this.handleInputChange}
           />
           </label> 
-
-          <label>
-          Kosher
-          <input
-            type="checkbox"
+        
+          <input 
+            type="submit" 
+            value="Submit"
           />
-          </label>           
         </form>
       </div>
     )

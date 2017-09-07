@@ -2,34 +2,56 @@ import React from 'react';
 import Filter from './Filter.jsx';
 import ProductList from './ProductList.jsx';
 import axios from 'axios'
+import update from 'immutability-helper';
+
+axios.defaults.headers.common['Authorization'] = 'Token token=MDplNzZhNjgwMi05MzMwLTExZTctOTc4NC1iN2U4ZjMxZDA4ODM6WDBwa1hqQTB0N01HOE1VY1JEbmlJd0FHRGR2c0Jhc3NvSmVI';
 
 class App extends React.Component {
   constructor(props) {
     super();
 
     this.state = {
-      seasonal: false,
-      limited: false
+      products: [],
+      query: []
     }
 
-    this.handleSeasonalInput = this.handleSeasonalInput.bind(this);
-    this.handleLimitedInput = this.handleLimitedInput.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSeasonalInput(seasonal) {
-    seasonal ? this.setState({seasonal: true}) : this.setState({seasonal: false})
-  }
+  getProducts() {
+    const config = {
+      params: {
+        where: this.state.query.join(','),
+        per_page: 21
+      }
+    }
 
-  handleLimitedInput(limited) {
-    if (limited) {
-      this.setState({
-        limited: true
-      })     
-    } else {
-      this.setState({
-        limited: false
+    axios.get("https://lcboapi.com/products?", config)
+      .then(res => {
+        const products = res.data.result
+        this.setState({ products: products })
       })
+  }
+
+  handleInput(checked, value) {
+    if (checked) {
+      this.setState(prevState => ({
+        query: [...prevState.query, value]
+      }))      
+    } else {
+      this.setState(prevState => ({
+        query: update(this.state.query, {$splice: [[prevState.query.indexOf(value), 1]]})
+      }))
     }
+  }
+
+  handleSubmit() {
+    this.getProducts();
+  }
+
+  componentDidMount() {
+    this.getProducts();
   }
 
   render () {
@@ -40,11 +62,11 @@ class App extends React.Component {
         </div>
 
         <Filter 
-          onSeasonalInput={this.handleSeasonalInput}
-          onLimitedInput={this.handleLimitedInput}
+          onInput={this.handleInput}
+          onSubmit={this.handleSubmit}
         />
 
-        <ProductList seasonal={this.state.seasonal} limited={this.state.limited}/>
+        <ProductList data={this.state.products}/>
       </div>
       )
   }
