@@ -7,7 +7,7 @@ class Drink extends React.Component {
 
   render () {
     const price = (this.props.data.price_in_cents / 100).toFixed(2);
-    const alcohol_volume = (this.props.data.alcohol_content / this.props.data.volume_in_milliliters * 100).toFixed(1);
+    const alcohol_volume = (this.props.data.alcohol_content / 100).toFixed(1);
 
     return (
       <div className="drink">
