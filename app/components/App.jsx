@@ -6,7 +6,7 @@ import ProductModal from './ProductModal.jsx';
 
 import axios from 'axios'
 import update from 'immutability-helper';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Media from 'react-media';
 
 axios.defaults.headers.common['Authorization'] = 'Token token=MDplNzZhNjgwMi05MzMwLTExZTctOTc4NC1iN2U4ZjMxZDA4ODM6WDBwa1hqQTB0N01HOE1VY1JEbmlJd0FHRGR2c0Jhc3NvSmVI';
@@ -22,7 +22,9 @@ class App extends React.Component {
       filterVisible: false,
       searchOn: false,
       showModal: false,
-      product: {}
+      product: {},
+      width: '0',
+      height: '0'
     }
 
     this.handleInput = this.handleInput.bind(this);
@@ -31,6 +33,7 @@ class App extends React.Component {
     this.toggleFilter = this.toggleFilter.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.handleShowProduct = this.handleShowProduct.bind(this);
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   getProducts() {
@@ -72,11 +75,11 @@ class App extends React.Component {
   }
 
   handleShowProduct(product) {
-    console.log(product);
     this.setState({
       product: product
     })
-    this.toggleModal();
+
+    this.state.width > 500 ? this.toggleModal() : null
   }
 
   toggleFilter() {
@@ -90,13 +93,24 @@ class App extends React.Component {
     })
   }
 
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+  }
+
   componentDidMount() {
     this.getProducts();
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);    
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
   }
 
   render () {
     return (
       <div className="wrapper">
+
         <Header onClick={this.toggleFilter}/>
 
         {
@@ -109,7 +123,11 @@ class App extends React.Component {
                 />
             : null
         }
+
         <ProductList data={this.state.products} showProduct={this.handleShowProduct} isSearching={this.state.searchOn}/>
+        
+
+        <ProductView show={this.state.showModal} data={this.state.product}/>
 
         <ProductModal 
           show={this.state.showModal}
