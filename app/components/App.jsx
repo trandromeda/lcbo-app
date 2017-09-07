@@ -1,8 +1,13 @@
 import React from 'react';
+import Header from './Header.jsx';
 import Filter from './Filter.jsx';
 import ProductList from './ProductList.jsx';
+import ProductModal from './ProductModal.jsx';
+
 import axios from 'axios'
 import update from 'immutability-helper';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import Media from 'react-media';
 
 axios.defaults.headers.common['Authorization'] = 'Token token=MDplNzZhNjgwMi05MzMwLTExZTctOTc4NC1iN2U4ZjMxZDA4ODM6WDBwa1hqQTB0N01HOE1VY1JEbmlJd0FHRGR2c0Jhc3NvSmVI';
 
@@ -14,13 +19,17 @@ class App extends React.Component {
       products: [],
       where: [],
       query: '',
-      filterVisible: false
+      filterVisible: false,
+      showModal: false,
+      product: {}
     }
 
     this.handleInput = this.handleInput.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleFilter = this.toggleFilter.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+    this.handleShowProduct = this.handleShowProduct.bind(this);
   }
 
   getProducts() {
@@ -61,8 +70,22 @@ class App extends React.Component {
     this.getProducts();
   }
 
+  handleShowProduct(product) {
+    console.log(product);
+    this.setState({
+      product: product
+    })
+    this.toggleModal();
+  }
+
   toggleFilter() {
     this.setState({filterVisible: !this.state.filterVisible});
+  }
+
+  toggleModal() {
+    this.setState({
+      showModal: !this.state.showModal
+    })
   }
 
   componentDidMount() {
@@ -72,12 +95,8 @@ class App extends React.Component {
   render () {
     return (
       <div className="wrapper">
-        <div className="header">
-          <div className="inner-wrapper">
-            <div className="filter-icon" onClick={this.toggleFilter}>Filter</div>
-            <h1>Drynk</h1>
-          </div>
-        </div>
+        <Header onClick={this.toggleFilter}/>
+
         {
           this.state.filterVisible
             ?  <Filter 
@@ -88,7 +107,13 @@ class App extends React.Component {
                 />
             : null
         }
-        <ProductList data={this.state.products}/>
+        <ProductList data={this.state.products} showProduct={this.handleShowProduct}/>
+
+        <ProductModal 
+          show={this.state.showModal}
+          onClose={this.toggleModal}
+          data={this.state.product}
+        / >
       </div>
       )
   }

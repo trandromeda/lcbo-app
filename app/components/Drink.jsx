@@ -10,7 +10,7 @@ class Drink extends React.Component {
     const alcohol_volume = (this.props.data.alcohol_content / 100).toFixed(1);
 
     return (
-      <div className="drink">
+      <div className="drink" onClick={this.props.onClick}>
       <img src={this.props.data.image_thumb_url} className="thumbnail" />
         <h1>{this.props.data.name}</h1>
 

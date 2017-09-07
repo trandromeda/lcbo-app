@@ -72,7 +72,7 @@ class Filter extends React.Component {
           </label> 
 
           <label className="form-search">
-          <p>Enter some keywords (e.g. wine, sparkling, fruit)</p>
+          <p>Enter some keywords (e.g. colour, country, fruit)</p>
           <input
             type="text"
             name="search"

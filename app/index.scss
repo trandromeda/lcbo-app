@@ -26,7 +26,7 @@ h1 {
 
 .header {
   background: #FFFFFF;
-  height: 4vh;
+  height: 3vh;
   padding: 5px;
 
   .inner-wrapper {
@@ -53,7 +53,6 @@ h1 {
   height: 190px;
   max-width: 770px;
   margin: auto;
-  background: #F3F1F3;
 
   @media (max-width: 500px) {
     height: 310px;
@@ -391,6 +390,66 @@ $second-row-height: 385px;
 
     p {
       text-align: left;
+    }
+  }
+}
+
+/* Drink Modal */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal.drink {
+  flex-basis: 50%;
+  background: #FFFFFF;
+  margin-top: 100px;
+  width: 500px;
+  border-radius: 5px;
+
+  .thumbnail {
+    height: $second-row-height * .55;
+    float: none;
+    display: block;
+    margin: auto;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .product-description {
+    max-width: 75%;
+    margin: auto;
+  }
+
+  .details-box {
+    clear: both;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      font-size: 12px;
+    }
+
+    .details-labels p {
+      color: #6F6A71;
+      text-align: left;
+      margin: 5px 0;
+    }
+
+    .details-values p {
+      color: #9E9A9F;
+      text-align: right;
+      margin: 5px 0;
     }
   }
 }
