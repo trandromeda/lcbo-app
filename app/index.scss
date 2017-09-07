@@ -103,8 +103,7 @@ h1 {
 
   &:nth-child(1) {
     &:hover {
-      color: #FFFFFF;
-      background: #E91E63;  
+      color: #E91E63;
     }
 
     :checked + h2 {
@@ -115,8 +114,7 @@ h1 {
 
   &:nth-child(2) {
     &:hover {
-      color: #FFFFFF;
-      background: #03A9F4;   
+      color: #03A9F4;
     }
 
     :checked + h2 {
@@ -127,8 +125,7 @@ h1 {
 
   &:nth-child(3) {
     &:hover {
-      color: #FFFFFF;
-      background: #9C27B0;   
+      color: #9C27B0;
     }
 
     :checked + h2 {
@@ -139,8 +136,7 @@ h1 {
 
   &:nth-child(4) {
     &:hover {
-      color: #FFFFFF;
-      background: #D500F9;  
+      color: #D500F9;
     }
 
     :checked + h2 {
