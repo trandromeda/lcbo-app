@@ -432,7 +432,7 @@ $second-row-height: 385px;
   align-items: center;
 }
 
-.modal.drink {
+.modal, .show {
   flex-basis: 55%;
   background: #FFFFFF;
   margin-top: 100px;
@@ -515,6 +515,31 @@ $second-row-height: 385px;
     span {
       text-align: right;
       font-size: 1.5em;
+    }
+  }
+}
+
+/* Show Drink (Mobile) */
+
+.drink.show {
+  height: 550px;
+  width: 100%;
+  margin-top: 0;
+
+  .price-box {
+    display: block;
+    width: auto;
+  }
+
+  .lcbo {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    button {
+      margin-top: 15px;
+      margin-bottom: 0;
     }
   }
 }

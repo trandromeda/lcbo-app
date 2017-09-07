@@ -13,7 +13,7 @@ class Modal extends React.Component {
 
     return (
       <div className="backdrop">
-        <div className="modal drink">
+        <div className="modal">
           <button className="close" onClick={this.props.onClose}>
             <span className="fa fa-times"></span>
           </button>

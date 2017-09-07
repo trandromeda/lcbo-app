@@ -13,7 +13,7 @@ class ProductView extends React.Component {
     const url = "http://www.lcbo.com/lcbo/product/" + name.split(/[\s\']/).join('-') + "/" + (this.props.data.product_no);
 
     return (
-      <div>
+      <div className="drink show">
         <img src={this.props.data.image_thumb_url} className="thumbnail" />
           <h1>{this.props.data.name}</h1>
 
@@ -54,11 +54,13 @@ class ProductView extends React.Component {
             </div>
           </div>
 
-            <a href={url}  target="_blank">
-              <button className="buy">
-              Buy on LCBO.com
-              </button>
-            </a>
+            <div className="lcbo">
+              <a href={url}  target="_blank">
+                <button className="buy">
+                Buy on LCBO.com
+                </button>
+              </a>
+            </div>
 
         </div>
       </div>

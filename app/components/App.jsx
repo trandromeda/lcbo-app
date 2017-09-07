@@ -3,6 +3,7 @@ import Header from './Header.jsx';
 import Filter from './Filter.jsx';
 import ProductList from './ProductList.jsx';
 import ProductModal from './ProductModal.jsx';
+import ProductView from './ProductView.jsx';
 
 import axios from 'axios'
 import update from 'immutability-helper';
@@ -24,7 +25,8 @@ class App extends React.Component {
       showModal: false,
       product: {},
       width: '0',
-      height: '0'
+      height: '0',
+      showMobileProduct: false
     }
 
     this.handleInput = this.handleInput.bind(this);
@@ -79,7 +81,7 @@ class App extends React.Component {
       product: product
     })
 
-    this.state.width > 500 ? this.toggleModal() : null
+    this.state.width > 500 ? this.toggleModal() : this.setState({showMobileProduct: !this.state.showMobileProduct})
   }
 
   toggleFilter() {
@@ -124,16 +126,21 @@ class App extends React.Component {
             : null
         }
 
-        <ProductList data={this.state.products} showProduct={this.handleShowProduct} isSearching={this.state.searchOn}/>
+        {!this.state.showMobileProduct && 
+          <ProductList data={this.state.products} showProduct={this.handleShowProduct} isSearching={this.state.searchOn}/>
+        }
         
-
-        <ProductView show={this.state.showModal} data={this.state.product}/>
-
-        <ProductModal 
-          show={this.state.showModal}
-          onClose={this.toggleModal}
-          data={this.state.product}
-        / >
+        <Media query="(max-width: 500px)">
+          { matches => matches ? (
+            this.state.showMobileProduct && <ProductView data={this.state.product}/>
+          ) : (
+            <ProductModal 
+              show={this.state.showModal}
+              onClose={this.toggleModal}
+              data={this.state.product}
+            / >
+          )}
+        </Media>
       </div>
       )
   }
