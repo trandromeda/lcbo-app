@@ -36,6 +36,7 @@ class App extends React.Component {
     this.toggleModal = this.toggleModal.bind(this);
     this.handleShowProduct = this.handleShowProduct.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.toggleView = this.toggleView.bind(this);
   }
 
   getProducts() {
@@ -76,17 +77,25 @@ class App extends React.Component {
     this.getProducts();
   }
 
+  // This is executed by both the mobile and desktop views
   handleShowProduct(product) {
     this.setState({
       product: product
     })
 
+  // If the viewport is desktop, show the modal. Otherwise, toggle the showMobileProduct state
+  // This will hide the product list and show only the single product that was clicked
     this.state.width > 500 ? this.toggleModal() : this.setState({showMobileProduct: !this.state.showMobileProduct})
   }
 
   toggleFilter() {
     this.setState({filterVisible: !this.state.filterVisible});
     this.setState({searchOn: !this.state.searchOn});
+  }
+
+  // This is solely responsible for returning the page to its default when navigating back from a mobile product page
+  toggleView() {
+    this.setState({showMobileProduct: !this.state.showMobileProduct})
   }
 
   toggleModal() {
@@ -113,7 +122,7 @@ class App extends React.Component {
     return (
       <div className="wrapper">
 
-        <Header onClick={this.toggleFilter}/>
+        <Header filter={this.toggleFilter} back={this.toggleView} nav={this.state.showMobileProduct}/>
 
         {
           this.state.filterVisible

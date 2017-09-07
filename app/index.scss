@@ -1,7 +1,7 @@
 /* Global Styles */
 
 body {
-  background:  #F1F1F1;
+  background: #F1F1F1;
   margin: 0;
 }
 
@@ -39,7 +39,7 @@ h1 {
 
 .header {
   background: #FFFFFF;
-  height: 3vh;
+  height: 4vh;
   padding: 10px;
 
   .fa-filter {
@@ -58,9 +58,13 @@ h1 {
   }
 
   h1 {
-    margin-top: 5px;
-    vertical-align: middle;
     transform: scale(1, -1);
+    clear: both;
+    z-index: 1;
+
+    @media (max-width: 500px) {
+      margin-top: 1vh;
+    }
   }
 }
 
@@ -444,7 +448,7 @@ $second-row-height: 385px;
     height: $second-row-height * .55;
     float: none;
     display: block;
-    margin: auto;
+    margin: 0 auto;
     clear: right;
   }
 
@@ -510,6 +514,7 @@ $second-row-height: 385px;
     outline: none;
     background: #FFFFFF;
     float: right;
+    margin: 15px 15px 0 0;
     cursor: pointer;
 
     span {
@@ -521,25 +526,40 @@ $second-row-height: 385px;
 
 /* Show Drink (Mobile) */
 
-.drink.show {
-  height: 550px;
-  width: 100%;
-  margin-top: 0;
+@media (max-width: 500px) {
+  .drink.show {
+    height: 550px;
+    width: 100%;
+    margin-top: 0;
 
-  .price-box {
-    display: block;
-    width: auto;
+    .price-box {
+      display: block;
+      width: auto;
+    }
+
+    .lcbo {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+
+      button {
+        margin-top: 15px;
+        margin-bottom: 0;
+      }
+    }
   }
 
-  .lcbo {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+  .fa-chevron-left {
+    font-size: 1.5em;
+  }
 
-    button {
-      margin-top: 15px;
-      margin-bottom: 0;
-    }
+  .back {
+    position: absolute;
+    z-index: 10;
+  }
+
+  .back + h1 {
+    color: #DDE4EF;
   }
 }
