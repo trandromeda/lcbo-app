@@ -20,6 +20,7 @@ class App extends React.Component {
       where: [],
       query: '',
       filterVisible: false,
+      searchOn: false,
       showModal: false,
       product: {}
     }
@@ -80,8 +81,7 @@ class App extends React.Component {
 
   toggleFilter() {
     this.setState({filterVisible: !this.state.filterVisible});
-        console.log(this.state.products)
-
+    this.setState({searchOn: !this.state.searchOn});
   }
 
   toggleModal() {
@@ -109,7 +109,7 @@ class App extends React.Component {
                 />
             : null
         }
-        <ProductList data={this.state.products} showProduct={this.handleShowProduct}/>
+        <ProductList data={this.state.products} showProduct={this.handleShowProduct} isSearching={this.state.searchOn}/>
 
         <ProductModal 
           show={this.state.showModal}
