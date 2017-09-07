@@ -1,16 +1,18 @@
 import React from 'react';
 
-class Drink extends React.Component {
+// Render each individual card on the home page
+
+class DrinkCard extends React.Component {
   constructor(props) {
     super();
   }
 
-  render () {
+  render() {
     const price = (this.props.data.price_in_cents / 100).toFixed(2);
     const alcohol_volume = (this.props.data.alcohol_content / 100).toFixed(1);
 
     return (
-      <div className="drink">
+      <div className="product" onClick={this.props.onClick}>
       <img src={this.props.data.image_thumb_url} className="thumbnail" />
         <h1>{this.props.data.name}</h1>
 
@@ -24,7 +26,11 @@ class Drink extends React.Component {
 
           <div className="price-box">
             <p className="price"><span className="dollar">$</span>{price}</p>
-            <p className="in-stock">{!this.props.data.is_dead ? 'y' : 'n'} IN STOCK</p>
+            <p className="in-stock">
+              {!this.props.data.is_dead 
+                ?  <span className="fa fa-check"></span>
+                :  <span className="fa fa-times"></span>} IN STOCK
+            </p>
           </div>
 
         </div>
@@ -34,4 +40,4 @@ class Drink extends React.Component {
   }
 }
 
-module.exports = Drink;
+module.exports = DrinkCard;

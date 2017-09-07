@@ -1,8 +1,14 @@
 import React from 'react';
+import Header from './Header.jsx';
 import Filter from './Filter.jsx';
 import ProductList from './ProductList.jsx';
+import ProductModal from './ProductModal.jsx';
+import ProductView from './ProductView.jsx';
+
 import axios from 'axios'
 import update from 'immutability-helper';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Media from 'react-media';
 
 axios.defaults.headers.common['Authorization'] = 'Token token=MDplNzZhNjgwMi05MzMwLTExZTctOTc4NC1iN2U4ZjMxZDA4ODM6WDBwa1hqQTB0N01HOE1VY1JEbmlJd0FHRGR2c0Jhc3NvSmVI';
 
@@ -14,13 +20,22 @@ class App extends React.Component {
       products: [],
       where: [],
       query: '',
-      filterVisible: false
+      product: {},
+      width: '0',
+      filterVisible: false,
+      searchOn: false,
+      showModal: false,      
+      showMobileProduct: false
     }
 
     this.handleInput = this.handleInput.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleFilter = this.toggleFilter.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+    this.handleShowProduct = this.handleShowProduct.bind(this);
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.toggleView = this.toggleView.bind(this);
   }
 
   getProducts() {
@@ -61,24 +76,54 @@ class App extends React.Component {
     this.getProducts();
   }
 
+  // This is executed by both the mobile and desktop views
+  handleShowProduct(product) {
+    this.setState({
+      product: product
+    })
+
+  // If the viewport is desktop, show the modal. Otherwise, toggle the showMobileProduct state
+  // This will hide the product list and show only the single product that was clicked
+    this.state.width > 500 ? this.toggleModal() : this.setState({showMobileProduct: !this.state.showMobileProduct})
+  }
+
+  // Hide and show the filter form. Also set the app's status to searching or not
   toggleFilter() {
-    console.log('clicked');
     this.setState({filterVisible: !this.state.filterVisible});
+    this.setState({searchOn: !this.state.searchOn});
+  }
+
+  // This is solely responsible for returning the page to its default when navigating back from a mobile product page
+  toggleView() {
+    this.setState({showMobileProduct: !this.state.showMobileProduct})
+  }
+
+  toggleModal() {
+    this.setState({
+      showModal: !this.state.showModal
+    })
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth });
   }
 
   componentDidMount() {
     this.getProducts();
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);    
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
   }
 
   render () {
     return (
       <div className="wrapper">
-        <div className="header">
-          <div className="inner-wrapper">
-            <div className="filter-icon" onClick={this.toggleFilter}>Filter</div>
-            <h1>Drynk</h1>
-          </div>
-        </div>
+
+        <Header filter={this.toggleFilter} back={this.toggleView} nav={this.state.showMobileProduct}/>
+
         {
           this.state.filterVisible
             ?  <Filter 
@@ -89,7 +134,18 @@ class App extends React.Component {
                 />
             : null
         }
-        <ProductList data={this.state.products}/>
+
+      {/* These next two if statements toggle on and off when going between single product view and list view */}  
+        {!this.state.showMobileProduct && 
+          <ProductList data={this.state.products} showProduct={this.handleShowProduct} isSearching={this.state.searchOn}/>
+        }
+        {this.state.showMobileProduct && <ProductView data={this.state.product}/>}
+
+        <ProductModal 
+          show={this.state.showModal}
+          onClose={this.toggleModal}
+          data={this.state.product}
+        / >
       </div>
       )
   }
