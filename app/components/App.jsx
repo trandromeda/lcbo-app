@@ -12,17 +12,20 @@ class App extends React.Component {
 
     this.state = {
       products: [],
-      query: []
+      where: [],
+      query: ''
     }
 
     this.handleInput = this.handleInput.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   getProducts() {
     const config = {
       params: {
-        where: this.state.query.join(','),
+        where: this.state.where.join(','),
+        q: this.state.query,
         per_page: 21
       }
     }
@@ -37,13 +40,19 @@ class App extends React.Component {
   handleInput(checked, value) {
     if (checked) {
       this.setState(prevState => ({
-        query: [...prevState.query, value]
+        where: [...prevState.where, value]
       }))      
     } else {
       this.setState(prevState => ({
-        query: update(this.state.query, {$splice: [[prevState.query.indexOf(value), 1]]})
+        where: update(this.state.where, {$splice: [[prevState.where.indexOf(value), 1]]})
       }))
     }
+  }
+
+  handleSearch(search) {
+    this.setState({
+      query: search.split(' ').join('+')
+    })
   }
 
   handleSubmit() {
@@ -63,6 +72,8 @@ class App extends React.Component {
 
         <Filter 
           onInput={this.handleInput}
+          search={this.state.query}
+          onSearch={this.handleSearch}
           onSubmit={this.handleSubmit}
         />
 

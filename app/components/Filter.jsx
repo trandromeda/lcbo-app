@@ -4,12 +4,24 @@ class Filter extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      search: ''
+    }
+
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInputChange(e) {
     this.props.onInput(e.target.checked, e.target.value);
+  }
+
+  handleSearchChange(e) {
+    this.setState({
+      search: e.target.value
+    })
+    this.props.onSearch(e.target.value);
   }
 
   handleSubmit(e) {
@@ -56,7 +68,17 @@ class Filter extends React.Component {
             onChange={this.handleInputChange}
           />
           </label> 
-        
+
+          <label>
+          Enter some keywords (e.g. wine, red, fruit)
+          <input
+            type="text"
+            name="search"
+            value={this.state.search}
+            onChange={this.handleSearchChange}
+          />
+          </label> 
+
           <input 
             type="submit" 
             value="Submit"
