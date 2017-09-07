@@ -1,4 +1,5 @@
 import React from 'react';
+import DrinkCard from './DrinkCard.jsx';
 
 class ProductView extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class ProductView extends React.Component {
     const url = "http://www.lcbo.com/lcbo/product/" + name.split(/[\s\']/).join('-') + "/" + (this.props.data.product_no);
 
     return (
-      <div className="drink show">
+      <div className="product show">
         <img src={this.props.data.image_thumb_url} className="thumbnail" />
           <h1>{this.props.data.name}</h1>
 

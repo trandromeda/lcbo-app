@@ -20,12 +20,11 @@ class App extends React.Component {
       products: [],
       where: [],
       query: '',
-      filterVisible: false,
-      searchOn: false,
-      showModal: false,
       product: {},
       width: '0',
-      height: '0',
+      filterVisible: false,
+      searchOn: false,
+      showModal: false,      
       showMobileProduct: false
     }
 
@@ -88,6 +87,7 @@ class App extends React.Component {
     this.state.width > 500 ? this.toggleModal() : this.setState({showMobileProduct: !this.state.showMobileProduct})
   }
 
+  // Hide and show the filter form. Also set the app's status to searching or not
   toggleFilter() {
     this.setState({filterVisible: !this.state.filterVisible});
     this.setState({searchOn: !this.state.searchOn});
@@ -105,7 +105,7 @@ class App extends React.Component {
   }
 
   updateWindowDimensions() {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
+    this.setState({ width: window.innerWidth });
   }
 
   componentDidMount() {
@@ -135,21 +135,17 @@ class App extends React.Component {
             : null
         }
 
+      {/* These next two if statements toggle on and off when going between single product view and list view */}  
         {!this.state.showMobileProduct && 
           <ProductList data={this.state.products} showProduct={this.handleShowProduct} isSearching={this.state.searchOn}/>
         }
-        
-        <Media query="(max-width: 500px)">
-          { matches => matches ? (
-            this.state.showMobileProduct && <ProductView data={this.state.product}/>
-          ) : (
-            <ProductModal 
-              show={this.state.showModal}
-              onClose={this.toggleModal}
-              data={this.state.product}
-            / >
-          )}
-        </Media>
+        {this.state.showMobileProduct && <ProductView data={this.state.product}/>}
+
+        <ProductModal 
+          show={this.state.showModal}
+          onClose={this.toggleModal}
+          data={this.state.product}
+        / >
       </div>
       )
   }

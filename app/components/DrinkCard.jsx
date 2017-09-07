@@ -1,16 +1,16 @@
 import React from 'react';
 
-class Drink extends React.Component {
+class DrinkCard extends React.Component {
   constructor(props) {
     super();
   }
 
-  render () {
+  render() {
     const price = (this.props.data.price_in_cents / 100).toFixed(2);
     const alcohol_volume = (this.props.data.alcohol_content / 100).toFixed(1);
 
     return (
-      <div className="drink" onClick={this.props.onClick}>
+      <div className="product" onClick={this.props.onClick}>
       <img src={this.props.data.image_thumb_url} className="thumbnail" />
         <h1>{this.props.data.name}</h1>
 
@@ -38,4 +38,4 @@ class Drink extends React.Component {
   }
 }
 
-module.exports = Drink;
+module.exports = DrinkCard;

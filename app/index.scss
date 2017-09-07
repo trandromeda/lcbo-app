@@ -236,7 +236,7 @@ $second-row-height: 385px;
   justify-content: space-between;
 }
 
-.drink {
+.product {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -321,7 +321,7 @@ $second-row-height: 385px;
 /* Desktop */
 @media (min-width: 500px) {
 // DEFAULT ROWS
-  .drink {
+  .product {
     height: $default-height;
     flex-basis: 32%;
 
@@ -331,7 +331,7 @@ $second-row-height: 385px;
   }
 
 // FIRST ROW
-  .drink:nth-child(1) {
+  .product:nth-child(1) {
     height: $first-row-height;
     flex-basis: 100%;
     display: block;
@@ -349,7 +349,7 @@ $second-row-height: 385px;
   }
 
 // SECOND ROW
-  .drink:nth-child(2), .drink:nth-child(3) {
+  .product:nth-child(2), .product:nth-child(3) {
     height: $second-row-height;
     flex-basis: 49%;
 
@@ -359,7 +359,7 @@ $second-row-height: 385px;
   }
 
   // Style the first two rows together because they share styles that are different from the rest of the cards
-  .drink:nth-child(1), .drink:nth-child(2), .drink:nth-child(3) {
+  .product:nth-child(1), .product:nth-child(2), .product:nth-child(3) {
     .thumbnail {
       float: left;
     }
@@ -388,7 +388,7 @@ $second-row-height: 385px;
     flex-direction: column;
   }
 
-  .drink {
+  .product {
     height: 385px;
     padding: 1.5em;
     display: flex;
@@ -422,7 +422,8 @@ $second-row-height: 385px;
   margin: 15px 0;  
 }
 
-/* Drink Modal */
+/* Show Product */
+// DESKTOP
 
 .backdrop {
   position: fixed;
@@ -436,10 +437,13 @@ $second-row-height: 385px;
   align-items: center;
 }
 
+.modal {
+  margin-top: 100px;
+}
+
 .modal, .show {
   flex-basis: 55%;
   background: #FFFFFF;
-  margin-top: 100px;
   width: 500px;
   border-radius: 5px;
   cursor: default;
@@ -454,6 +458,7 @@ $second-row-height: 385px;
 
   h1 {
     text-align: center;
+    font-size: 30px;
   }
 
   .product-description {
@@ -524,10 +529,11 @@ $second-row-height: 385px;
   }
 }
 
-/* Show Drink (Mobile) */
+/* Show Product */
+// MOBILE
 
 @media (max-width: 500px) {
-  .drink.show {
+  .product.show {
     height: 550px;
     width: 100%;
     margin-top: 0;

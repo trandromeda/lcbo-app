@@ -1,5 +1,5 @@
 import React from 'react';
-import Drink from './Drink.jsx';
+import DrinkCard from './DrinkCard.jsx';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class ProductList extends React.Component {
@@ -20,7 +20,7 @@ class ProductList extends React.Component {
         {isEmpty 
           ? 
           this.props.data.map(product =>
-              <Drink 
+              <DrinkCard
               key={product.id}
               data={product}
               onClick={this.showProduct.bind(this, product)}
