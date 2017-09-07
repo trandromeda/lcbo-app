@@ -29,6 +29,17 @@ h1 {
   height: 4vh;
   padding: 5px;
 
+  .inner-wrapper {
+    max-width: 770px;
+    margin: auto;
+    z-index: 1;
+  }
+
+  .filter-icon {
+    position: absolute;
+    z-index: 10;
+  }
+
   h1 {
     margin-top: 5px;
     vertical-align: middle;

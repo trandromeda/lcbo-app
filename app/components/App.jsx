@@ -13,12 +13,14 @@ class App extends React.Component {
     this.state = {
       products: [],
       where: [],
-      query: ''
+      query: '',
+      filterVisible: false
     }
 
     this.handleInput = this.handleInput.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleFilter = this.toggleFilter.bind(this);
   }
 
   getProducts() {
@@ -59,6 +61,11 @@ class App extends React.Component {
     this.getProducts();
   }
 
+  toggleFilter() {
+    console.log('clicked');
+    this.setState({filterVisible: !this.state.filterVisible});
+  }
+
   componentDidMount() {
     this.getProducts();
   }
@@ -67,16 +74,21 @@ class App extends React.Component {
     return (
       <div className="wrapper">
         <div className="header">
-          <h1>Drynk</h1>
+          <div className="inner-wrapper">
+            <div className="filter-icon" onClick={this.toggleFilter}>Filter</div>
+            <h1>Drynk</h1>
+          </div>
         </div>
-
-        <Filter 
-          onInput={this.handleInput}
-          search={this.state.query}
-          onSearch={this.handleSearch}
-          onSubmit={this.handleSubmit}
-        />
-
+        {
+          this.state.filterVisible
+            ?  <Filter 
+                onInput={this.handleInput}
+                search={this.state.query}
+                onSearch={this.handleSearch}
+                onSubmit={this.handleSubmit}
+                />
+            : null
+        }
         <ProductList data={this.state.products}/>
       </div>
       )
