@@ -39,16 +39,156 @@ h1 {
 /* Filter Form Styles */
 
 .filter {
-  height: 200px;
+  height: 190px;
   max-width: 770px;
   margin: auto;
   background: #F3F1F3;
 
+  @media (max-width: 500px) {
+    height: 310px;
+  }
+
   form {
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
+
+  p {
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+.form-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  height: 80px;
+  padding: 0;
+  flex-basis: 24%;
+  text-align: center;
+  cursor: pointer;
+
+  @media (max-width: 500px) {
+    margin: 5px 0;
+    flex-basis: 49%;
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  h2 {
+    display: block;
+    font-size: 16px;
+    font-family: 'Lora', serif;
+    box-sizing: border-box;
+    margin: 0;
+    flex-basis: 100%;
+    padding: 30px 0;
+  }
+
+  input {
+    display: block;
+    margin: auto;
+  }
+
+  &:hover {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;        
+  }
+
+  &:nth-child(1) {
+    &:hover {
+      color: #E91E63;
+    }
+
+    :checked + h2 {
+      color: #FFFFFF;
+      background: #E91E63;
+    }
+  }
+
+  &:nth-child(2) {
+    &:hover {
+      color: #03A9F4;
+    }
+
+    :checked + h2 {
+      color: #FFFFFF;
+      background: #03A9F4;
+    }    
+  }
+
+  &:nth-child(3) {
+    &:hover {
+      color: #9C27B0;
+    }
+
+    :checked + h2 {
+      color: #FFFFFF;
+      background: #9C27B0;
+    }
+  }
+
+  &:nth-child(4) {
+    &:hover {
+      color: #D500F9;
+    }
+
+    :checked + h2 {
+      color: #FFFFFF;
+      background: #D500F9;
+    }
+  }    
+}
+
+.form-search {
+  margin: 5px 0;
+  text-align: center;
+  flex-basis: 100%;
+
+  p {
+    display: inline-block;
+    margin: 5px;
+  }
+
+  input {
+    margin-left: 5px;
+  }
+}
+
+.form-submit {
+  flex-basis: 100%;
+}
+
+button.form-submit {
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 5px 16px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  background: #fff;
+
+  &:hover, &:active {
+    color: #0e83cd;
+    background: #fff;
+    cursor: pointer;
+  } 
 }
 
 /* Product List Styles */
