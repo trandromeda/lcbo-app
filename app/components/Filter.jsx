@@ -74,7 +74,7 @@ class Filter extends React.Component {
           </label> 
 
           <label className="form-search">
-          <p>Enter some keywords (e.g. colour, country, fruit)</p>
+          <p>Get creative with words (e.g. colours, countries, fruits)</p>
           <input
             type="text"
             name="search"
