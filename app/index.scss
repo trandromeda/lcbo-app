@@ -17,7 +17,7 @@ h1 {
   text-align: center;
   font-family: 'Lora', serif;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 2.75vh;
 }
 
 .fa-check {
@@ -43,7 +43,7 @@ h1 {
   padding: 10px;
 
   .fa-filter {
-    font-size: 1.5em;
+    font-size: 3vh;
   }
 
   .inner-wrapper {
@@ -62,6 +62,7 @@ h1 {
     transform: scale(1, -1);
     clear: both;
     z-index: 1;
+    margin: 0.75vh 0 0 0;
 
     @media (max-width: 500px) {
       margin-top: 1vh;
@@ -225,9 +226,9 @@ button.form-submit {
 
 /* Product List Styles */
 
-$default-height: 355px;
-$first-row-height: 300px;
-$second-row-height: 385px;
+$default-height: 40vh;
+$first-row-height: 35vh;
+$second-row-height: 45vh;
 
 .container {
   display: flex;
@@ -252,7 +253,7 @@ $second-row-height: 385px;
   h1 {
     font-family: 'Lora', serif;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 2.75vh;
     flex-basis: 100%;
   }
 
@@ -336,10 +337,9 @@ $second-row-height: 385px;
     height: $first-row-height;
     flex-basis: 100%;
     display: block;
-    padding: 2.5em;
-
+    padding: 5vh;
     h1 {
-      margin-top: 10%;
+      margin-top: 7vh;
       text-align: left;
     }
 
@@ -424,7 +424,7 @@ $second-row-height: 385px;
 }
 
 /* Show Product */
-// DESKTOP
+// DESKTOP (MODAL)
 
 .backdrop {
   position: fixed;
@@ -439,18 +439,19 @@ $second-row-height: 385px;
 }
 
 .modal {
-  margin-top: 100px;
+  margin-top: 5vh;
 }
 
 .modal, .show {
-  flex-basis: 55%;
-  background: #FFFFFF;
+  min-height: 620px;
+  max-height: 700px;
   width: 500px;
+  background: #FFFFFF;  
   border-radius: 5px;
   cursor: default;
 
   .thumbnail {
-    height: $second-row-height * .55;
+    height: $second-row-height * .45;
     float: none;
     display: block;
     margin: 0 auto;
@@ -458,13 +459,17 @@ $second-row-height: 385px;
   }
 
   h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 200;
     text-align: center;
-    font-size: 30px;
+    font-size: 4.25vh;
+    margin: 1vh auto;
   }
 
   .product-description {
-    max-width: 75%;
+    width: 70%;
     margin: auto;
+    flex-basis: auto;
   }
 
   .details-box {
@@ -535,9 +540,18 @@ $second-row-height: 385px;
 
 @media (max-width: 500px) {
   .product.show {
-    height: 550px;
+    min-height: 80vh;
+    max-height: 85vh;
     width: 100%;
     margin-top: 0;
+
+    .thumbnail {
+      height: $second-row-height * .7;
+    }
+
+    h1 {
+      font-family: "Lora", serif;
+    }
 
     .price-box {
       display: block;
@@ -555,10 +569,14 @@ $second-row-height: 385px;
         margin-bottom: 0;
       }
     }
+
+    .product-description {
+      width: 80%;
+    }
   }
 
   .fa-chevron-left {
-    font-size: 1.5em;
+    font-size: 3vh;
   }
 
   .back {
