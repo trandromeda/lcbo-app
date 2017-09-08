@@ -31,7 +31,7 @@ class ProductList extends React.Component {
           : 
             isSearching ?
               <div className="empty">Sorry, we couldn't find anything matching that. Please try again!
-                <img src="https://media.giphy.com/media/K4849SW5Womc0/giphy.gif"/>
+                <img src="https://media.giphy.com/media/VILJHh5AodVIs/giphy.gif"/>
               </div>
               : <span className="fa fa-spinner fa-pulse fa-3x fa-fw"></span>
             

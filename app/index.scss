@@ -115,12 +115,12 @@ h1 {
 
   h2 {
     display: block;
-    font-size: 2.75vh;
+    font-size: 2vh;
     font-family: 'Lora', serif;
     box-sizing: border-box;
     margin: 0;
     flex-basis: 100%;
-    padding: 4.5vh 0;
+    padding: 4.8vh 0;
   }
 
   input {
@@ -253,7 +253,7 @@ $second-row-height: 45vh;
   h1 {
     font-family: 'Lora', serif;
     font-weight: bold;
-    font-size: 2.75vh;
+    font-size: 2.25vh;
     flex-basis: 100%;
   }
 
@@ -420,7 +420,14 @@ $second-row-height: 45vh;
 .empty {
   text-align: center;
   font-family: 'Roboto', sans-serif;
-  margin: 15px 0;  
+  margin: 15px auto;  
+
+  img {
+    display: block;
+    height: auto;
+    width: 50%;
+    margin: auto;
+  }
 }
 
 /* Show Product */
