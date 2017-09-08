@@ -73,12 +73,12 @@ h1 {
 /* Filter Form Styles */
 
 .filter {
-  height: 190px;
+  height: 32vh;
   max-width: 770px;
   margin: auto;
 
   @media (max-width: 500px) {
-    height: 310px;
+    height: 50vh;
   }
 
   form {
@@ -98,7 +98,7 @@ h1 {
   justify-content: space-around;
   background: #FFFFFF;
   box-sizing: border-box;
-  height: 80px;
+  height: 12.5vh;
   padding: 0;
   flex-basis: 24%;
   text-align: center;
@@ -115,12 +115,12 @@ h1 {
 
   h2 {
     display: block;
-    font-size: 16px;
+    font-size: 2.75vh;
     font-family: 'Lora', serif;
     box-sizing: border-box;
     margin: 0;
     flex-basis: 100%;
-    padding: 30px 0;
+    padding: 4.5vh 0;
   }
 
   input {
@@ -180,7 +180,7 @@ h1 {
 }
 
 .form-search {
-  margin: 5px 0;
+  margin: 2vh 0;
   text-align: center;
   flex-basis: 100%;
 
